@@ -1,36 +1,22 @@
 pipeline {
     agent any
-    options {
-      buildDiscarder(logRotator(numToKeepStr: '5'))
-    }
+    
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/JasonKZhuang/pbl-micro-sb.git'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'mvn clean install'
             }
         }
-        stage('For the fix branch'){
-            when {
-                branch 'fix-*'
-            }
-            steps {
-                sh '''
-                   cat README.md
-                '''
-            }
-        }
-        stage('For the PR'){
-            when {
-                branch 'PR-*'
-            }
-            steps {
-                echo 'this is only for the PRs'
-            }
-        }
-        
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'mvn test'
             }
         }
         stage('Deploy') {
