@@ -1,6 +1,7 @@
 # Getting Started
 # make sure the $JAVA_HOME is same as the application jdk version
 ... let's start
+update
 
 # run the application by using following command in console:
 ./mvnw spring-boot:run
