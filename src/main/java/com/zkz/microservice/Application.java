@@ -75,7 +75,7 @@ public class Application {
             System.out.println("2 ==========Let's insert some new products into the database =================");
             log.info("Preloading " + repository.save(new Product("Bilbo Baggins")));
             log.info("Preloading " + repository.save(new Product("Frodo Baggins")));
-            for (int i =0; i < 10; i++) {
+            for (int i =0; i < 5; i++) {
                 Product p = new Product(
                         new Faker().book().title(),
                         new Faker().number().randomDouble(2, 10, 100),
@@ -83,6 +83,7 @@ public class Application {
                 );
                 repository.save(p);
             }
+
         };
     }
 
