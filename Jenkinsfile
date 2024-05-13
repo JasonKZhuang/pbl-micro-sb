@@ -11,7 +11,7 @@ pipeline {
         }
         stage('For the fix branch'){
             when {
-                branch "fix-*"
+                branch 'fix-*'
             }
             steps {
                 sh '''
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('For the PR'){
             when {
-                branch "PR-*"
+                branch 'PR-*'
             }
             steps {
                 echo 'this is only for the PRs'
