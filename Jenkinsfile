@@ -1,27 +1,38 @@
 pipeline {
     agent any
-    
+
     stages {
-//         stage('Checkout') {
-//             steps {
-//                 git 'https://github.com/JasonKZhuang/pbl-micro-sb.git'
-//             }
-//         }
-        stage('Build') {
+        stage('Checkout') {
+            steps {
+                echo 'Checkout ...'
+            }
+        }
+        stage('Maven Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn clean install'
+                
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'mvn test'
+               
             }
+            post {
+                always {
+                    echo 'Post Testing..'
+                }
+            }
+        }
+       stage('Docker Image') {
+             steps {
+                echo 'Building docker image ...'
+                
+             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploying...., should run docker run command to upload to dockerhub'
             }
         }
     }
