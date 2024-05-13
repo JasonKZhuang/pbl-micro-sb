@@ -2,11 +2,11 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/JasonKZhuang/pbl-micro-sb.git'
-            }
-        }
+//         stage('Checkout') {
+//             steps {
+//                 git 'https://github.com/JasonKZhuang/pbl-micro-sb.git'
+//             }
+//         }
         stage('Build') {
             steps {
                 echo 'Building..'
